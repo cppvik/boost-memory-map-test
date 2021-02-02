@@ -14,7 +14,7 @@ struct Block {
     bool data[1];
 };
 
-void testKeyBlocksWrite(boost::iostreams::mapped_file &file) {
+void testDataBlocksWrite(boost::iostreams::mapped_file &file) {
     if (!file.is_open())
         return;
 
@@ -34,7 +34,7 @@ void testKeyBlocksWrite(boost::iostreams::mapped_file &file) {
     cout << numberOfBlocks << " data blocks written in " << elapsed.count() << " ms" << endl;
 }
 
-void testKeyBlocksRead(boost::iostreams::mapped_file &file) {
+void testDataBlocksRead(boost::iostreams::mapped_file &file) {
     if (!file.is_open())
         return;
 
@@ -142,8 +142,8 @@ int main(int argc, char **argv) {
         // testReadData(file);
         // testWriteData(file);
         // testAlignment(file);
-        testKeyBlocksWrite(file);
-        testKeyBlocksRead(file);
+        testDataBlocksWrite(file);
+        testDataBlocksRead(file);
 
         // Don't forget to unmap
         start = chrono::high_resolution_clock::now();
